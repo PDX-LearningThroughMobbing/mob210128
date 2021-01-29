@@ -2,7 +2,7 @@
 
 Driver: does all the typing
 Navigator: Does all the deciding
-Mob: Consults and discusses
+Mob: Consults and discusses 
 
 Navigator: take us through each section
 
