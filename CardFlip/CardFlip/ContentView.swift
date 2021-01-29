@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var flipped = false
+    @State private var flipped: Double = 0.0
     
     var body: some View {
         Button(action: {
-
-            flipped.toggle()
+            withAnimation {
+                flipped = flipped == 0 ? 1 : 0
+            }
         }) {
-            
-            FlipAnimation(animatableData: <#T##Double#>)
-            
+            Color.clear.modifier(FlipAnimation(animatableData: flipped))
+                .transaction { transaction in
+                    transaction
+                }
         }
-        
     }
 }
 
@@ -68,6 +69,6 @@ struct FlipAnimation : AnimatableModifier {
             }
         }
         .padding()
-        .rotation3DEffect(animatableData > 0.5 ? Angle.degrees(180.0) : Angle.degrees(0.0), axis: (x: 0, y: 1, z: 0))
+        .rotation3DEffect(Angle.degrees(180 * animatableData), axis: (x: 0, y: 1, z: 0))
     }
 }
