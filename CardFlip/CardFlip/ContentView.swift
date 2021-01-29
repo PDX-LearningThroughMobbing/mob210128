@@ -12,9 +12,8 @@ struct ContentView: View {
     
     var body: some View {
         Button(action: {
-            withAnimation {
-                flipped.toggle()
-            }
+
+            flipped.toggle()
         }) {
             
             Group { if flipped {
@@ -24,8 +23,10 @@ struct ContentView: View {
                    
                     
             } }
-            .rotation3DEffect(flipped ? Angle.degrees(180.0) : Angle.degrees(0.0), axis: (x: 0, y: 1, z: 0))
             .padding()
+            .rotation3DEffect(flipped ? Angle.degrees(180.0) : Angle.degrees(0.0), axis: (x: 0, y: 1, z: 0))
+            .animation(.default)
+            
         }
         
     }
