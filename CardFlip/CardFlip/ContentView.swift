@@ -16,16 +16,7 @@ struct ContentView: View {
             flipped.toggle()
         }) {
             
-            Group { if flipped {
-                CardBack()
-            } else {
-                CardFront()
-                   
-                    
-            } }
-            .padding()
-            .rotation3DEffect(flipped ? Angle.degrees(180.0) : Angle.degrees(0.0), axis: (x: 0, y: 1, z: 0))
-            .animation(.default)
+            FlipAnimation(animatableData: <#T##Double#>)
             
         }
         
@@ -62,5 +53,21 @@ struct CardBack: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct FlipAnimation : AnimatableModifier {
+    var animatableData: Double
+    
+    func body(content: Content) -> some View {
+        Group {
+            if animatableData > 0.5 {
+                CardBack()
+            } else {
+                CardFront()
+            }
+        }
+        .padding()
+        .rotation3DEffect(animatableData > 0.5 ? Angle.degrees(180.0) : Angle.degrees(0.0), axis: (x: 0, y: 1, z: 0))
     }
 }
