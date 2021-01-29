@@ -30,11 +30,15 @@ Agree to or change these durations, changes might have to be made in Mobster:
 ## Project Description
 Things we want to do (Capture the concepts people would like to work on or learn about tonight):
         
-- 
-- 
-- 
+- Graphical display of information Watch OS, Widjets
+- Card flip animation in Swift UI
+- Make sure for use closures
 
 Project description (What we will do):
+
+A catalyst app
+Start with an in-place flip
+Maybe move to a pile of cards that flips into a reverse pile of cards
 
 
 Come up with a simple (can be done in an hour and a half) project that hits as many of those concepts as possible:
