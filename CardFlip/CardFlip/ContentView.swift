@@ -21,7 +21,23 @@ struct ContentView: View {
                     transaction.animation = transaction.animation?.speed(0.3)
                 }
         }.buttonStyle(PlainButtonStyle())
-        
+        .highPriorityGesture(DragGesture().onChanged { value in
+            withAnimation {
+                flipped = Double(value.translation.width) / 200.0
+            }
+        })
+    }
+}
+
+struct Diamond: Shape {
+    func path(in rect: CGRect) -> Path {
+        Path { path in
+            path.move(to: CGPoint(x: rect.midX, y: rect.minY))
+            path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
+            path.addLine(to: CGPoint(x: rect.midX, y: rect.maxY))
+            path.addLine(to: CGPoint(x: rect.minX, y: rect.midY))
+            path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
+        }
     }
 }
 
@@ -35,6 +51,8 @@ struct CardFront: View {
                 }
                 Spacer()
             }
+            
+            Diamond().fill()
             
             Text("9")
                 .rotationEffect(Angle.degrees(180.0))
