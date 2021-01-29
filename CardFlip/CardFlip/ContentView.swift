@@ -8,19 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var flipped = false
+
     var body: some View {
-        CardView(height: 300)
+        Button(action: {
+            flipped.toggle()
+        }) {
+            CardView()
+                .padding()
+                .rotationEffect(flipped ? Angle.degrees(180.0) : Angle.degrees(90.0))
+        }
+
     }
 }
 
 struct CardView: View {
-    var height : CGFloat
-    
     var body: some View {
         ZStack {
             VStack {
                 HStack {
-                    Text("9")
+                    Text("9").padding()
                     Spacer()
                 }
                 Spacer()
@@ -28,8 +35,10 @@ struct CardView: View {
             
             Text("9")
                 .rotationEffect(Angle.degrees(180.0))
+                .padding()
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
         }.font(.largeTitle)
+        .background(RoundedRectangle(cornerRadius: 8).stroke(Color.primary))
     }
 }
 
