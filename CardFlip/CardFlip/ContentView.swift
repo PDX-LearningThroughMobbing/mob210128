@@ -9,8 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        CardView()
+    }
+}
+
+struct CardView: View {
+    var body: some View {
+        ZStack {
+            Text("9")
+            Text("9").rotationEffect(Angle.degrees(180.0))
+        }.font(.largeTitle)
     }
 }
 
