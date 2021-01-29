@@ -9,15 +9,26 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        CardView()
+        CardView(height: 300)
     }
 }
 
 struct CardView: View {
+    var height : CGFloat
+    
     var body: some View {
         ZStack {
+            VStack {
+                HStack {
+                    Text("9")
+                    Spacer()
+                }
+                Spacer()
+            }
+            
             Text("9")
-            Text("9").rotationEffect(Angle.degrees(180.0))
+                .rotationEffect(Angle.degrees(180.0))
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
         }.font(.largeTitle)
     }
 }
