@@ -12,11 +12,13 @@ struct ContentView: View {
 
     var body: some View {
         Button(action: {
-            flipped.toggle()
+            withAnimation {
+                flipped.toggle()
+            }
         }) {
             CardView()
                 .padding()
-                .rotationEffect(flipped ? Angle.degrees(180.0) : Angle.degrees(90.0))
+                .rotation3DEffect(flipped ? Angle.degrees(180.0) : Angle.degrees(0.0), axis: (x: 0, y: 1, z: 0))
         }
 
     }
@@ -39,6 +41,7 @@ struct CardView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
         }.font(.largeTitle)
         .background(RoundedRectangle(cornerRadius: 8).stroke(Color.primary))
+        .background(RoundedRectangle(cornerRadius: 8).fill(Color.red))
     }
 }
 
