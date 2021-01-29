@@ -18,9 +18,10 @@ struct ContentView: View {
         }) {
             Color.clear.modifier(FlipAnimation(animatableData: flipped))
                 .transaction { transaction in
-                    transaction
+                    transaction.animation = transaction.animation?.speed(0.3)
                 }
-        }
+        }.buttonStyle(PlainButtonStyle())
+        
     }
 }
 
